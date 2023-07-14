@@ -31,6 +31,16 @@ jobs:
           echo "Building with Go $(cat .go-version)"
           echo "go-version=$(cat .go-version)" >> $GITHUB_OUTPUT
 
+  run-tests:
+     name: "Run tests"
+     runs-on: ubuntu-latet
+     steps:
+      - name: "Run go tests"
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
+        with:
+          instructions: |
+            make dockerbin 
+
   set-product-version:
     runs-on: ubuntu-latest
     outputs:
